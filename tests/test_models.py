@@ -101,6 +101,46 @@ class TestProductModel(unittest.TestCase):
         self.assertEqual(new_product.available, product.available)
         self.assertEqual(new_product.category, product.category)
 
+    def test_update_a_product(self):
+        """It should update an existing product"""
+        product = ProductFactory()
+        product.create()
+        product.description = "Updated description"
+        product.update()
+        self.assertEqual(Product.find(product.id).description, "Updated description")
+
+    def test_delete_a_product(self):
+        """It should delete a product"""
+        product = ProductFactory()
+        product.create()
+        product_id = product.id
+        product.delete()
+        self.assertIsNone(Product.find(product_id))
+
+    def test_list_all_products(self):
+        """It should list all products"""
+        for product in ProductFactory.create_batch(3):
+            product.create()
+        self.assertEqual(len(Product.all()), 3)
+
+    def test_find_product_by_name(self):
+        """It should find products by name"""
+        product = ProductFactory(name="Unique product")
+        product.create()
+        self.assertEqual(Product.find_by_name("Unique product").first().id, product.id)
+
+    def test_find_product_by_category(self):
+        """It should find products by category"""
+        product = ProductFactory(category=Category.FOOD)
+        product.create()
+        self.assertEqual(Product.find_by_category(Category.FOOD).first().id, product.id)
+
+    def test_find_product_by_availability(self):
+        """It should find products by availability"""
+        product = ProductFactory(available=False)
+        product.create()
+        self.assertEqual(Product.find_by_availability(False).first().id, product.id)
+
     #
     # ADD YOUR TEST CASES HERE
     #
