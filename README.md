@@ -1,49 +1,22 @@
-# TDD / BDD Final Project Template
+# TDD / BDD Final Project
 
-This repository contains the template to be used for the Final Project for the Coursera course **Introduction to TDD/BDD**.
+Product Catalog REST API and browser interface built from IBM's official Coursera final-project template. The project exercises test-driven development with model and API tests, and behavior-driven development with Behave and Selenium.
 
-## Usage
+## Run in the Skills Network lab
 
-This repository is to be used as a template to create your own repository in your own GitHub account. No need to Fork it as it has been set up as a Template. This will avoid confusion when making Pull Requests in the future.
+1. Create your own repository from the IBM template named `tdd-bdd-final-project`.
+2. In the lab terminal, clone your repository and enter its directory.
+3. Run `bash bin/setup.sh`, then close and reopen the terminal so the virtual environment activates.
+4. Start the application and database using the lab's supplied instructions.
 
-From the GitHub **Code** page, press the green **Use this template** button to create your own repository from this template. 
+## Project files
 
-Name your repo: `tdd-bdd-final-project`.
+- `tests/factories.py`: generated product test data.
+- `tests/test_models.py`: product model behavior tests.
+- `tests/test_routes.py`: REST API tests.
+- `service/routes.py`: product CRUD and search endpoints.
+- `features/products.feature`: browser behavior scenarios.
+- `features/steps/load_steps.py`: BDD background data setup.
+- `features/steps/web_steps.py`: Selenium actions for the scenarios.
 
-## Setup
-
-After entering the lab environment you will need to run the `setup.sh` script in the `./bin` folder to install the prerequisite software.
-
-```bash
-bash bin/setup.sh
-```
-
-Then you must exit the shell and start a new one for the Python virtual environment to be activated.
-
-```bash
-exit
-```
-
-## Tasks
-
-In this project you will use good Test Driven Development (TDD) and Behavior Driven Development (BDD) techniques to write TDD test cases, BDD scenarios, and code, updating the following files:
-
-```bash
-tests/test_models.py
-tests/test_routes.py
-service/routes.py
-features/products.feature
-features/steps/load_steps.py
-```
-
-You will be given partial implementations in each of these files to get you started. Use those implementations as examples of the code you should write.
-
-## License
-
-Licensed under the Apache License. See [LICENSE](/LICENSE)
-
-## Author
-
-John Rofrano, Senior Technical Staff Member, DevOps Champion, @ IBM Research
-
-## <h3 align="center"> © IBM Corporation 2023. All rights reserved. <h3/>
+The REST API is rooted at `/products` and supports create, read, update, delete, list, and filtering by name, category, and availability.
