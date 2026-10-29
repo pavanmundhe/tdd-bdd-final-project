@@ -109,6 +109,14 @@ class TestProductModel(unittest.TestCase):
         product.update()
         self.assertEqual(Product.find(product.id).description, "Updated description")
 
+    def test_find_product_by_id(self):
+        """It should read a product by its id"""
+        product = ProductFactory()
+        product.create()
+        found_product = Product.find(product.id)
+        self.assertIsNotNone(found_product)
+        self.assertEqual(found_product.id, product.id)
+
     def test_delete_a_product(self):
         """It should delete a product"""
         product = ProductFactory()
@@ -144,3 +152,4 @@ class TestProductModel(unittest.TestCase):
     #
     # ADD YOUR TEST CASES HERE
     #
+
